@@ -4,6 +4,7 @@ import cors from '@fastify/cors'
 import { PrismaClient } from '@prisma/client'
 
 const app = fastify()
+const hostname = 'localhost'
 const port = 3333 
 const prisma = new PrismaClient()
 
@@ -24,5 +25,5 @@ app.get('/habits', async () => {
 app.listen({
   port: port
 }).then(() => {
-  console.log(`HTTP Server running on port ${port}`)
+  console.log(`HTTP Server running at http://${hostname}:${port}/`)
 })
