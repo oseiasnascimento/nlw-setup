@@ -75,5 +75,18 @@ export async function appRoutes(app: FastifyInstance){
     }
   })
 
+  app.patch('/habits/:id/toggle', async (req) => {
+
+    const toggleHabitParams = z.object({
+      id: z.string().uuid()
+    })
+
+    const { id } = toggleHabitParams.parse(req.params)
+
+    const tody = dayjs().startOf('day').toDate()
+
+    
+
+  })
 
 }
