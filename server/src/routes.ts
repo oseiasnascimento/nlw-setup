@@ -111,8 +111,6 @@ export async function appRoutes(app: FastifyInstance) {
         }
       })
 
-      console.log('*******************************')
-      console.log(dayHabit)
     } else {
       ///adicionar a marcação de completar o hábito
       await prisma.dayHabit.create({
@@ -122,8 +120,6 @@ export async function appRoutes(app: FastifyInstance) {
         }
       })
 
-      console.log('--------------------------------')
-      console.log(dayHabit)
     }
   })
 
