@@ -4,15 +4,7 @@ import { api } from '../lib/axios'
 import { generateDatesFromYaerBeginning } from '../utils/generate-dates-from-yaer-beginning'
 import { HabitDay } from './HabitDay'
 
-const weekdays = [
-  'D', 
-  'S', 
-  'T', 
-  'Q', 
-  'Q', 
-  'S', 
-  'S'
-]
+const weekdays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
 
 const summatyDates = generateDatesFromYaerBeginning()
 
@@ -27,14 +19,12 @@ type Summary = {
 }[]
 
 export function SummaryTable() {
-
   const [summary, setSummary] = useState<Summary>([])
 
   useEffect(() => {
-    api.get('summary').then((res) => {
-      setSummary(res.data)
+    api.get('summary').then(response => {
+      setSummary(response.data)
     })
-
   })
 
   return (
@@ -53,17 +43,16 @@ export function SummaryTable() {
       </div>
       <div className="grid grid-rows-7 grid-flow-col gap-3">
         {summatyDates.map(date => {
-
           const dayInSummaty = summary.find(day => {
             return dayjs(date).isSame(day.date, 'day')
           })
 
           return (
-            <HabitDay 
-              key={date.toString()} 
-              date={date} 
-              amount={dayInSummaty?.amount}  
-              completed={dayInSummaty?.completed} 
+            <HabitDay
+              key={date.toString()}
+              date={date}
+              completed={dayInSummaty?.completed}
+              amount={dayInSummaty?.amount}
             />
           )
         })}

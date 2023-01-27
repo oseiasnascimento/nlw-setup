@@ -61,9 +61,10 @@ export async function appRoutes(app: FastifyInstance) {
       }
     })
 
-    const completedHabits = day?.dayHabits.map(dayHabits => {
-      return dayHabits.habit_id
-    }) ?? []
+    const completedHabits =
+      day?.dayHabits.map(dayHabits => {
+        return dayHabits.habit_id
+      }) ?? []
 
     return {
       possibleHabits,
@@ -110,7 +111,6 @@ export async function appRoutes(app: FastifyInstance) {
           id: dayHabit.id
         }
       })
-
     } else {
       ///adicionar a marcação de completar o hábito
       await prisma.dayHabit.create({
@@ -119,11 +119,10 @@ export async function appRoutes(app: FastifyInstance) {
           habit_id: id
         }
       })
-
     }
   })
 
-  app.get('/summary', async req => {
+  app.get('/summary', async () => {
     const summary = await prisma.$queryRaw`
     SELECT 
       D.id,
