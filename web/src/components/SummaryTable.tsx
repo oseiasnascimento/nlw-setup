@@ -25,7 +25,7 @@ export function SummaryTable() {
     api.get('summary').then(response => {
       setSummary(response.data)
     })
-  })
+  }, [])
 
   return (
     <div className="w-full flex ">
@@ -51,8 +51,8 @@ export function SummaryTable() {
             <HabitDay
               key={date.toString()}
               date={date}
-              completed={dayInSummaty?.completed}
               amount={dayInSummaty?.amount}
+              completed={dayInSummaty?.completed}
             />
           )
         })}
