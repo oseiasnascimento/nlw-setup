@@ -12,6 +12,8 @@ const thirdHabitId = 'fa1a1bcf-3d87-4626-8c0d-d7fd1255ac00'
 const thirdHabitCreationDate = new Date('2023-01-08T03:00:00.000')
 
 async function run() {
+  await prisma.habitWeekDays.deleteMany()
+  await prisma.dayHabit.deleteMany()
   await prisma.habit.deleteMany()
   await prisma.day.deleteMany()
 
@@ -57,11 +59,13 @@ async function run() {
         created_at: thirdHabitCreationDate,
         weekDays: {
           create: [
+            { week_day: 0 },
             { week_day: 1 },
             { week_day: 2 },
             { week_day: 3 },
             { week_day: 4 },
             { week_day: 5 },
+            { week_day: 6 },
           ]
         }
       }
