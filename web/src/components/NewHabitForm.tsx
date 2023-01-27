@@ -19,7 +19,7 @@ export function NewHabitForm() {
 
   async function createNewHabit(event: FormEvent) {
     event.preventDefault()
-    if(!title || weekDays.length === 0) {
+    if (!title || weekDays.length === 0) {
       return
     }
 
@@ -35,7 +35,7 @@ export function NewHabitForm() {
   }
 
   function handleToggleWeekDay(weedDay: number) {
-    if(weekDays.includes(weedDay)){
+    if (weekDays.includes(weedDay)) {
       const weekDayWithRemoveOne = weekDays.filter(day => day !== weedDay)
 
       setweekDays(weekDayWithRemoveOne)
@@ -44,7 +44,6 @@ export function NewHabitForm() {
 
       setweekDays(weekDayWithAddedOne)
     }
-
   }
 
   return (
@@ -57,7 +56,7 @@ export function NewHabitForm() {
         type="text"
         id="title"
         placeholder="ex.: Exercícios, dormir bem, etc..."
-        className="p-4 rounded-lg mt-3 bg-zinc-800 text-white hover:placeholder:text-zinc-400"
+        className="p-4 rounded-lg mt-3 bg-zinc-800 text-white hover:placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-offset-2 focus:ring-offset-zinc-900"
         autoFocus
         value={title}
         onChange={event => setTitle(event.target.value)}
@@ -72,11 +71,11 @@ export function NewHabitForm() {
           return (
             <Checkbox.Root
               key={weekDay}
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-3 group focus:outline-none"
               checked={weekDays.includes(i)}
               onCheckedChange={() => handleToggleWeekDay(i)}
             >
-              <div className="h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800 group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500 transition-colors">
+              <div className="h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800 group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500 transition-colors group-focus:ring-2 group-focus:ring-violet-600 group-focus:ring-offset-2 group-focus:ring-offset-background">
                 <Checkbox.Indicator>
                   <Check size={20} className="text-white" />
                 </Checkbox.Indicator>
@@ -89,7 +88,7 @@ export function NewHabitForm() {
 
       <button
         type="submit"
-        className="p-4 rounded-lg mt-6 flex items-center justify-center gap-3 font-semibold bg-green-600 hover:bg-green-500 transition-colors"
+        className="p-4 rounded-lg mt-6 flex items-center justify-center gap-3 font-semibold bg-green-600 hover:bg-green-500 transition-colors focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-offset-2 focus:ring-offset-zinc-900"
       >
         <Check size={20} weight="bold" />
         Confirmar
